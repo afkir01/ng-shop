@@ -1,0 +1,77 @@
+<html ng-app="phoneShop"> <!-- ng-app to declare its an Angularjs application   -->
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title></title>
+
+	<!-- Bootstrap CDN  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Angularjs CDN  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<!-- Angular Routes CDN  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<!-- Angular Animate CDN  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+	<!-- Angular UI Bootstrap CDN  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
+	<!-- JQuery CDN  -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  			crossorigin="anonymous">
+  	</script>
+  	
+	
+	<!-- app.js script  -->
+	<script src="app.js"></script>
+	<!-- CSS Style sheet  -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+	
+<body ng-controller="phoneController as vm">   <!-- declaring the phoneController  -->
+	<div class="container col-md-6"> <!-- Start of Container  -->
+
+		<!-- Repeating the phones -->
+		<div class="col-md-6" ng-repeat="phone in phones">
+			<div class="thumbnail item">
+				<img class="img-responsive" ng-src="{{phone.image}}" />
+				<div class="name-price">	
+					{{phone.name}} <br>
+					{{phone.price | currency: '&euro;'}}
+				</div>
+				<button class="btn btn-primary" ng-click="phone.selected = true" type="button">Purchase</button>
+			</div>
+		</div>
+	</div>  <!-- End of Container  -->	
+
+	<div class="sidebar col-md-6"> <!-- Start of CartContainer  -->
+
+		<div class="row">
+			<div class="col-md-12 centered sticky">
+				<div class="row">
+
+					<!-- Cart column  -->
+					<div class="col-md-6">
+						<div class="row shopping-cart">
+							<img class="img-responsive" src="images/cart.png" />
+						</div>
+					</div>
+
+					<!-- Total Price column  -->
+					<div class="col-md-6">
+						<div class="row">
+							<h3><strong>Total Price: <span ng-bind="getTotal() | currency: '&euro;'"></span></strong></h3>
+							{{phone.price | currency: '&euro;'}} <br>
+						</div>
+					</div>
+					<div class="total-cart" ng-if="phone.selected === true"  ng-repeat="phone in phones">
+						{{phone.name}} 
+						{{phone.price | currency: '&euro;'}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div	
+</body>
+</html>

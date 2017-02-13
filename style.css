@@ -1,0 +1,17 @@
+.centered {
+	float: none;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.sidebar {
+	float: right;
+}
+.row {
+	margin: 0 auto;
+}
+.container {
+	margin-top: 15px;
+}
